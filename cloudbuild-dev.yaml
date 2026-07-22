@@ -1,4 +1,6 @@
 steps:
+- name: 'gcr.io/cloud-builders/go'
+args: ['build', '-o', 'main', 'main.go']
 - name: 'gcr.io/cloud-builders/docker'
 args: ['build', '-t', 'us-west1-docker.pkg.dev/qwiklabs-gcp-02-b4f267a2ef89/my-repository/hello-app:v1.0', '.']
 - name: 'gcr.io/cloud-builders/docker'
