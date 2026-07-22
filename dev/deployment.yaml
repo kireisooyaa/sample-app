@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-name: development-deployment
-namespace: dev
+  name: development-deployment
+  namespace: dev
 spec:
-replicas: 1
-selector:
-matchLabels:
-  app: hello-app
-template:
-metadata:
-  labels:
-    app: hello-app
-spec:
-  containers:
-  - name: hello-app
-    image: us-west1-docker.pkg.dev/qwiklabs-gcp-02-b4f267a2ef89/my-repository/hello-app:v1.0
-    ports:
-    - containerPort: 8080
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-app
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec:
+      containers:
+      - name: hello-app
+        image: us-west1-docker.pkg.dev/qwiklabs-gcp-02-b4f267a2ef89/my-repository/hello-app:v1.0
+        ports:
+        - containerPort: 8080
