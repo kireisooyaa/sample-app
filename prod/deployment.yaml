@@ -2,19 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: production-deployment
-  namespace: prod
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: hello-app
+      app: production-app
   template:
     metadata:
       labels:
-        app: hello-app
+        app: production-app
     spec:
       containers:
-      - name: hello-app
-        image: us-west1-docker.pkg.dev/qwiklabs-gcp-02-b4f267a2ef89/my-repository/hello-app:v1.0
+      - name: production-container
+        image: <todo>
         ports:
         - containerPort: 8080
