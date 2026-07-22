@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-app
+      app: hello-cloudbuild-dev
   template:
     metadata:
       labels:
-        app: hello-app
+        app: hello-cloudbuild-dev
     spec:
       containers:
-      - name: hello-app
-        image: us-west1-docker.pkg.dev/qwiklabs-gcp-02-b4f267a2ef89/my-repository/hello-app:v1.0
+      - name: hello-cloudbuild-dev
+        image: us-west1-docker.pkg.dev/qwiklabs-gcp-02-b4f267a2ef89/my-repository/hello-cloudbuild-dev:v1.0
         ports:
         - containerPort: 8080
