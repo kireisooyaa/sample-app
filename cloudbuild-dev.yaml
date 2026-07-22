@@ -1,15 +1,15 @@
 steps:
-  - name: 'golang:1.19'
-    env: ['CGO_ENABLED=0', 'GOOS=linux']
-    args: ['go', 'build', '-o', 'main', 'main.go']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-west1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-app:v1.0', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-west1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-app:v1.0']
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'dev/']
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-west1-c'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
+- name: 'golang:1.19'
+env: ['CGO_ENABLED=0', 'GOOS=linux']
+args: ['go', 'build', '-o', 'main', 'main.go']
+- name: 'gcr.io/cloud-builders/docker'
+args: ['build', '-t', 'us-west1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-app:v2.0', '.']
+- name: 'gcr.io/cloud-builders/docker'
+args: ['push', 'us-west1-docker.pkg.dev/$PROJECT_ID/my-repository/hello-app:v2.0']
+- name: 'gcr.io/cloud-builders/kubectl'
+args: ['apply', '-f', 'dev/']
+env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-west1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
 options:
-  logging: CLOUD_LOGGING_ONLY
+logging: CLOUD_LOGGING_ONLY
